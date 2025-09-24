@@ -24,9 +24,9 @@ document.querySelectorAll(".htext").forEach(item => {
     document.querySelector(".Projects").scrollIntoView({ behavior: "smooth" });
   });
   
-  
-  
-  document.querySelector(".btn1").addEventListener("click", (e) => {
+
+
+  function sendEmail() {
     const name = document.querySelectorAll(".t")[0].value.trim();
     const email = document.querySelectorAll(".t")[1].value.trim();
     const message = document.querySelector(".m").value.trim();
@@ -36,14 +36,9 @@ document.querySelectorAll(".htext").forEach(item => {
       return;
     }
   
+    const subject = `Message from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    
+    window.location.href = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
   
-    alert("✅ Message sent successfully! (You can connect this to email backend later)");
-  });
-  
-  
-  document.querySelectorAll(".btn1")[1].addEventListener("click", () => {
-    const email = "your.email@example.com"; 
-    navigator.clipboard.writeText(email).then(() => {
-      alert("📋 Email copied to clipboard!");
-    });
-  });
