@@ -25,20 +25,27 @@ document.querySelectorAll(".htext").forEach(item => {
   });
   
 
+function sendEmail() {
+  const name = document.querySelectorAll(".t")[0].value.trim();
+  const email = document.querySelectorAll(".t")[1].value.trim();
+  const message = document.querySelector(".m").value.trim();
 
-  function sendEmail() {
-    const name = document.querySelectorAll(".t")[0].value.trim();
-    const email = document.querySelectorAll(".t")[1].value.trim();
-    const message = document.querySelector(".m").value.trim();
-  
-    if (!name || !email || !message) {
-      alert("⚠️ Please fill in all fields before sending.");
-      return;
-    }
-  
-    const subject = `Message from ${name}`;
-    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    
-    window.location.href = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  if (!name || !email || !message) {
+    alert("⚠️ Please fill in all fields before sending.");
+    return;
   }
-  
+
+  const subject = `Message from ${name}`;
+  const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+  window.location.href = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function copyEmail() {
+  const email = "your.email@example.com";
+  navigator.clipboard.writeText(email).then(() => {
+    alert("✅ Email copied to clipboard!");
+  });
+}
+
+
